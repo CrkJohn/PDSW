@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+ <h:head>
+ 
+ 
+ </h:head>
+ <h:body>
+ 	<h:form id="guess_form">
+ 			
+ 			<div id = "seccion1" style="display: none">
+ 				<p:outputLabel> The number to guess is: </p:outputLabel>
+				<h:outputLabel value="#{guessBean.getNumberGuess()}"></h:outputLabel>
+			</div>
+			
+			<br> </br>
+			<p:outputLabel>Attemps: </p:outputLabel>
+			<h:outputLabel value="#{guessBean.getAttemps()}"></h:outputLabel>
+			<br> </br>
+			<p:outputLabel>Prize: </p:outputLabel>
+			<h:outputLabel value="#{guessBean.getPrize()}"></h:outputLabel>
+			<br> </br>
+			<p:outputLabel>Prizes won: </p:outputLabel>
+			<h:outputLabel value="#{guessBean.getAmount()}"></h:outputLabel>
+			<br> </br>
+			
+			<h:inputText binding="#{user_input}">Digite el numero</h:inputText>
+			
+			<h:commandButton value="guess" update="guess_form" actionListener="#{guessBean.guess(user_input.value)}"></h:commandButton>
+			<h:commandButton value="restart" update="guess_form" actionListener="#{guessBean.restart()}"></h:commandButton>
+			<br> </br>
+			<h:outputLabel> Intentos realizados: </h:outputLabel>
+			<h:dataTable var="t" value="#{guessBean.tries}">
+				<h:column headerText ="Id">
+        			<h:outputText value="#{t}"/>
+        		</h:column>
+    		</h:dataTable>
+			
+ 	</h:form>
+ </h:body>
+</html>
